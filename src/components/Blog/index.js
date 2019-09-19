@@ -10,7 +10,6 @@ class Blog extends Component {
     return (
       <Fragment>
         <h2>{title}</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
       </Fragment>
     )
   }

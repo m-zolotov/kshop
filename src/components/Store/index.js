@@ -12,8 +12,6 @@ class Store extends Component {
     return (
       <Fragment>
         <h2>{title}</h2>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio dolore enim est eveniet facilis ipsam
-          iure nobis, nostrum nulla odit placeat possimus quia saepe sit sunt unde velit. Deleniti, facere.</p>
       </Fragment>
     )
   }

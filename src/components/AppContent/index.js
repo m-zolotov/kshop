@@ -41,7 +41,7 @@ class AppContent extends Component {
         component: Partners,
       },
     ]
-    console.log(routes)
+
     return routes.map(route => (
       <Route key={route.path} exact={route.exact} path={route.path} component={route.component} />
     ))
