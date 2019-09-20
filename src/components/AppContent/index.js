@@ -13,7 +13,7 @@ import Partners from '../Partners'
 import URLS from '../../utils/urls'
 
 class AppContent extends Component {
-  get routes() {
+  static get routes() {
     const routes = [
       {
         path: URLS.HOME,
@@ -53,7 +53,7 @@ class AppContent extends Component {
         <Header />
         <main>
           <Switch>
-            {this.routes}
+            {AppContent.routes}
             <Redirect to={URLS.HOME} />
           </Switch>
         </main>
