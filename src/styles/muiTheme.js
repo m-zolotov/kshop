@@ -14,3 +14,11 @@ export const COLORS = {
     dark: "#c51162"
   },
 }
+
+export default {
+  props: {
+    MuiButtonBase: {
+      disableRipple: true,
+    },
+  },
+}

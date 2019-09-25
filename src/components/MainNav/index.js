@@ -98,7 +98,7 @@ function MainNav() {
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
-      <List>
+      <List component="nav">
         {navLinks.map(link => {
           return (
             <NavLink key={link.to} to={link.to}>
@@ -113,22 +113,24 @@ function MainNav() {
       </List>
     </div>
   );
-
+  // Удалить Toolbar?
   return (
     <AppBar position="static">
       <Toolbar>
-        <NavLink to={URLS.HOME}>
-          <img className="sidebar__logo" src={logImg} alt="Vaillant Group" width="50px" height="50px" />
-        </NavLink>
-        {renderNavLinks(navLinks)}
-        <IconButton aria-label="show 17 new notifications" color="inherit">
-          <Badge badgeContent={17} color="secondary">
-            <ShoppingCart />
-          </Badge>
-        </IconButton>
-        <IconButton onClick={toggleDrawer('left', true)}>
-          <MenuIcon />
-        </IconButton>
+        <List component="nav">
+          <NavLink to={URLS.HOME}>
+            <img className="sidebar__logo" src={logImg} alt="Vaillant Group" width="50px" height="50px" />
+          </NavLink>
+          {renderNavLinks(navLinks)}
+          <IconButton aria-label="show 17 new notifications" color="inherit">
+            <Badge badgeContent={17} color="secondary">
+              <ShoppingCart />
+            </Badge>
+          </IconButton>
+          <IconButton onClick={toggleDrawer('left', true)}>
+            <MenuIcon />
+          </IconButton>
+        </List>
       </Toolbar>
       <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
         {sideList('left', navLinks)}
