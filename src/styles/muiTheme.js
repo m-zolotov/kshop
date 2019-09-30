@@ -16,9 +16,29 @@ export const COLORS = {
 }
 
 export default {
+  overrides: {
+    MuiAppBar: {
+      root: {
+        boxShadow: "none",
+        backgroundColor: COLORS.common.white,
+      },
+    },
+  },
   props: {
     MuiButtonBase: {
       disableRipple: true,
+    },
+  },
+  palette: {
+    primary: {
+      light: COLORS.primary.light,
+      main: COLORS.primary.main,
+      dark: COLORS.primary.dark,
+    },
+    secondary: {
+      light: COLORS.secondary.light,
+      main: COLORS.secondary.main,
+      dark: COLORS.secondary.dark,
     },
   },
 }

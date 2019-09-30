@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import {Redirect, Switch, Route} from 'react-router-dom'
 
 import MainNav from '../MainNav'
-import Header from '../Header'
 import Home from '../Home'
 import Store from '../Store'
 import Blog from '../Blog'
@@ -50,7 +49,6 @@ class AppContent extends Component {
     return (
       <Fragment>
         <MainNav />
-        <Header />
         <main>
           <Switch>
             {AppContent.routes}

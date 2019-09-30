@@ -1,7 +1,8 @@
-import React, {useState} from 'react'
+import React, {useState, Fragment} from 'react'
 import PropTypes from 'prop-types'
 import {makeStyles} from '@material-ui/core/styles';
 import {NavLink} from 'react-router-dom'
+import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 import AppBar from '@material-ui/core/AppBar';
 import Badge from '@material-ui/core/Badge';
@@ -113,10 +114,10 @@ function MainNav() {
       </List>
     </div>
   );
-  // Удалить Toolbar?
+  // TODO: Ниже нужен Toolbar?
   return (
     <AppBar position="static">
-      <Toolbar>
+      <Container>
         <List component="nav">
           <NavLink to={URLS.HOME}>
             <img className="sidebar__logo" src={logImg} alt="Vaillant Group" width="50px" height="50px" />
@@ -131,7 +132,7 @@ function MainNav() {
             <MenuIcon />
           </IconButton>
         </List>
-      </Toolbar>
+      </Container>
       <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
         {sideList('left', navLinks)}
       </Drawer>

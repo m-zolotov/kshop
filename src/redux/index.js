@@ -1,9 +1,12 @@
 import {combineReducers} from 'redux'
 
 import goods from './goods'
-import cart from './cart'
+import posts from './posts'
+//import partners from './partners'
+//import cart from './cart'
+//import contacts from './contacts'
 
 export default combineReducers({
   goods,
-  cart,
+  posts
 })

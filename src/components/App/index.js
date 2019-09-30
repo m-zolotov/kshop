@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {BrowserRouter} from 'react-router-dom'
+import {Router} from 'react-router-dom'
 import {MuiThemeProvider, createMuiTheme} from '@material-ui/core/styles'
 
 import AppContent from '../AppContent'

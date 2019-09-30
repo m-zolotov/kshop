@@ -10,15 +10,6 @@ import '../styles/style.scss'
 
 const store = createStore(rootReducer, applyMiddleware(thunk, logger))
 
-/*console.log(store.getState())
-
-store.dispatch({
-  type: 'ADD_TODO',
-  text: 'Use Redux'
-})
-
-console.log(store.getState())*/
-
 export default class Root extends Component {
   render() {
     return (

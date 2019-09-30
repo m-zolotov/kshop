@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import Container from '@material-ui/core/Container';
 
 import HomeList from './HomeList'
 import {fetchGoods} from '../../redux/goods'
@@ -20,20 +21,12 @@ class Home extends Component {
     const title = getTitle(window.location.pathname)
     const {goods} = this.props
 
-    const homeList = (
-      <HomeList goods={goods} />
-    )
-
-    let homeContent = (
-      <Fragment>
-        {homeList}
-      </Fragment>
-    )
-
     return (
       <section>
-        <h2>{title}</h2>
-        {homeContent}
+        <Container>
+          <h2>{title}</h2>
+          {goods && <HomeList goods={goods} />}
+        </Container>
       </section>
     )
   }

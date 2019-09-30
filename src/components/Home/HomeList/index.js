@@ -8,20 +8,15 @@ class HomeList extends Component {
     goods: PropTypes.array,
   }
 
-  /*renderLi() {
+  renderLi() {
     const {goods} = this.props
-    console.log('goods', goods)
-    goods.map((item, index) => {
-      return (
-        <ListItem key={index}>{item.title}</ListItem>
-      )
-    })
-  }*/
+    return goods.map((item, index) => <ListItem key={index}>{item.title}</ListItem>)
+  }
 
   render() {
     return (
       <List>
-        {/*{this.renderLi()}*/}
+        {this.renderLi()}
       </List>
     )
   }
