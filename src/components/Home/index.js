@@ -1,45 +1,45 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import Container from '@material-ui/core/Container';
 
 import HomeList from './HomeList'
-import {fetchGoods} from '../../redux/goods'
+import {fetchProducts} from '../../redux/products'
 import {getTitle} from '../../utils/helpres'
 
 class Home extends Component {
   static propTypes = {
-    goods: PropTypes.array,
-    fetchGoods: PropTypes.func.isRequired,
+    products: PropTypes.array,
+    fetchProducts: PropTypes.func.isRequired,
   }
 
   componentDidMount() {
-    this.props.fetchGoods()
+    this.props.fetchProducts()
   }
 
   render() {
     const title = getTitle(window.location.pathname)
-    const {goods} = this.props
+    const {products} = this.props
 
     return (
       <section>
         <Container>
           <h2>{title}</h2>
-          {goods && <HomeList goods={goods} />}
+          {products && <HomeList products={products} />}
         </Container>
       </section>
     )
   }
 }
 
-const mapStateToProps = ({goods}) => ({
-  goods: goods.goods,
-  isGoodsFetching: goods.isGoodsFetching,
-  goodsError: goods.goodsError,
+const mapStateToProps = ({products}) => ({
+  products: products.products,
+  isProductsFetching: products.isProductsFetching,
+  productsError: products.productsError,
 })
 
 const mapDispatchToProps = {
-  fetchGoods,
+  fetchProducts,
 }
 
 export default connect(

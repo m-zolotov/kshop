@@ -5,12 +5,12 @@ import ListItem from '@material-ui/core/ListItem';
 
 class HomeList extends Component {
   static propTypes = {
-    goods: PropTypes.array,
+    products: PropTypes.array,
   }
 
   renderLi() {
-    const {goods} = this.props
-    return goods.map((item, index) => <ListItem key={index}>{item.title}</ListItem>)
+    const {products} = this.props
+    return products.map((item, index) => <ListItem key={index}>{item.title}</ListItem>)
   }
 
   render() {
