@@ -8,5 +8,5 @@ import posts from './posts'
 
 export default combineReducers({
   products,
-  posts
+  posts,
 })

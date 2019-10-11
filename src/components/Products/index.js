@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 
-import ProductList from "./ProductsList";
-import ProductsSorting from "./ProductsSorting";
+import ProductList from './ProductsList'
+import ProductsSorting from './ProductsSorting'
 
 class Products extends Component {
   static propTypes = {

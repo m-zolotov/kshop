@@ -1,19 +1,21 @@
-import React, {Component} from 'react'
+import React, {PureComponent} from 'react'
 import PropTypes from 'prop-types'
 
-import Grid from '@material-ui/core/Grid';
-import ProductCart from '../../_common/ProductCard'
+import Grid from '@material-ui/core/Grid'
+import Product from '../Product'
 
-class ProductsList extends Component {
+class ProductsList extends PureComponent {
   static propTypes = {
     products: PropTypes.array,
   }
 
   renderProducts() {
     const {products} = this.props
-    return products.map((product, index) => <Grid item xs={4}>
-      <ProductCart key={index} product={product} />
-    </Grid>)
+    return products.map(product => (
+      <Grid item xs={4} key={product.id}>
+        <Product key={product.id} product={product} />
+      </Grid>
+    ))
   }
 
   render() {

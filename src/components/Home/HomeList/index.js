@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
+import List from '@material-ui/core/List'
+import ListItem from '@material-ui/core/ListItem'
 
 class HomeList extends Component {
   static propTypes = {
@@ -10,15 +10,11 @@ class HomeList extends Component {
 
   renderLi() {
     const {products} = this.props
-    return products.map((item, index) => <ListItem key={index}>{item.title}</ListItem>)
+    return products.map(item => <ListItem key={item.id}>{item.title}</ListItem>)
   }
 
   render() {
-    return (
-      <List>
-        {this.renderLi()}
-      </List>
-    )
+    return <List>{this.renderLi()}</List>
   }
 }
 

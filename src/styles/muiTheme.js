@@ -1,17 +1,17 @@
 export const COLORS = {
   common: {
-    black: "#000",
-    white: "#fff"
+    black: '#000',
+    white: '#fff',
   },
   primary: {
-    light: "#7986cb",
-    main: "#3f51b5",
-    dark: "#303f9f"
+    light: '#7986cb',
+    main: '#3f51b5',
+    dark: '#303f9f',
   },
   secondary: {
-    light: "#ff4081",
-    main: "#f50057",
-    dark: "#c51162"
+    light: '#ff4081',
+    main: '#f50057',
+    dark: '#c51162',
   },
 }
 
@@ -19,7 +19,7 @@ export default {
   overrides: {
     MuiAppBar: {
       root: {
-        boxShadow: "none",
+        boxShadow: 'none',
         backgroundColor: COLORS.common.white,
       },
     },

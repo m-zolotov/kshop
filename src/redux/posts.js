@@ -25,7 +25,7 @@ export default (state = initialState, action) => {
   }
 }
 
-export const fetchPosts = () => (dispatch) => {
+export const fetchPosts = () => dispatch => {
   dispatch({type: FETCH_POSTS})
   axios
     .get('https://jsonplaceholder.typicode.com/posts')

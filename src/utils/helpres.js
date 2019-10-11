@@ -1,6 +1,6 @@
 import URLS from './urls'
 
-export const getTitle = (url) => {
+export const getTitle = url => {
   if (url === URLS.HOME) return 'Главная'
   if (url === URLS.STORE) return 'Магазин'
   if (url === URLS.BLOG) return 'Блог'

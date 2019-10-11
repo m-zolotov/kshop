@@ -1,7 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import Container from '@material-ui/core/Container';
+import Container from '@material-ui/core/Container'
 
 import {fetchPosts} from '../../redux/posts'
 import {getTitle} from '../../utils/helpres'
@@ -36,10 +36,10 @@ const mapStateToProps = ({posts}) => ({
 })
 
 const mapDispatchToProps = {
-  fetchPosts
+  fetchPosts,
 }
 
-export default connect (
+export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Blog)

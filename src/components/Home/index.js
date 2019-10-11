@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
-import Container from '@material-ui/core/Container';
+import Container from '@material-ui/core/Container'
 
 import HomeList from './HomeList'
 import {fetchProducts} from '../../redux/products'

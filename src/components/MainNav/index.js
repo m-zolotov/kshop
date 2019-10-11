@@ -1,33 +1,33 @@
 import React, {useState, Fragment} from 'react'
 import PropTypes from 'prop-types'
-import {makeStyles} from '@material-ui/core/styles';
+import {makeStyles} from '@material-ui/core/styles'
 import {NavLink} from 'react-router-dom'
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import AppBar from '@material-ui/core/AppBar';
-import Badge from '@material-ui/core/Badge';
-import Button from '@material-ui/core/Button';
-import Drawer from '@material-ui/core/Drawer';
-import Toolbar from '@material-ui/core/Toolbar';
-import IconButton from '@material-ui/core/IconButton';
-import List from '@material-ui/core/List';
-import Divider from '@material-ui/core/Divider';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
-import ListItemText from '@material-ui/core/ListItemText';
+import Container from '@material-ui/core/Container'
+import Grid from '@material-ui/core/Grid'
+import AppBar from '@material-ui/core/AppBar'
+import Badge from '@material-ui/core/Badge'
+import Button from '@material-ui/core/Button'
+import Drawer from '@material-ui/core/Drawer'
+import Toolbar from '@material-ui/core/Toolbar'
+import IconButton from '@material-ui/core/IconButton'
+import List from '@material-ui/core/List'
+import Divider from '@material-ui/core/Divider'
+import ListItem from '@material-ui/core/ListItem'
+import ListItemIcon from '@material-ui/core/ListItemIcon'
+import ListItemText from '@material-ui/core/ListItemText'
 
-import MenuIcon from '@material-ui/icons/Menu';
+import MenuIcon from '@material-ui/icons/Menu'
 import Store from '@material-ui/icons/Store'
 import PersonIcon from '@material-ui/icons/PersonTwoTone'
 import CheckCircleIcon from '@material-ui/icons/CheckCircleTwoTone'
 import ArchiveIcon from '@material-ui/icons/ArchiveTwoTone'
 import ListAltIcon from '@material-ui/icons/ListAltTwoTone'
-import ShoppingCart from '@material-ui/icons/ShoppingCart';
+import ShoppingCart from '@material-ui/icons/ShoppingCart'
 
 import logImg from '../../assets/img/logo.svg'
 import {getTitle} from '../../utils/helpres'
 import URLS from '../../utils/urls'
-import './style.scss';
+import './style.scss'
 
 const useStyles = makeStyles({
   list: {
@@ -36,21 +36,21 @@ const useStyles = makeStyles({
   fullList: {
     width: 'auto',
   },
-});
+})
 
 function MainNav() {
-  const classes = useStyles();
+  const classes = useStyles()
   const [state, setState] = useState({
     left: false,
-  });
+  })
 
   const toggleDrawer = (side, open) => event => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
-      return;
+      return
     }
 
-    setState({ ...state, [side]: open });
-  };
+    setState({...state, [side]: open})
+  }
 
   const navLinks = [
     {
@@ -61,7 +61,7 @@ function MainNav() {
     {
       text: getTitle(URLS.STORE),
       to: URLS.STORE,
-      icon: <Store/>,
+      icon: <Store />,
     },
     {
       text: getTitle(URLS.BLOG),
@@ -78,9 +78,9 @@ function MainNav() {
       to: URLS.PARTNERS,
       icon: <ListAltIcon />,
     },
-  ];
+  ]
 
-  const renderNavLinks = (navLinks) =>
+  const renderNavLinks = navLinks =>
     navLinks.map(link => {
       return (
         <NavLink key={link.to} to={link.to}>
@@ -90,7 +90,7 @@ function MainNav() {
           </Button>
         </NavLink>
       )
-    });
+    })
 
   const sideList = (side, navLinks) => (
     <div
@@ -113,7 +113,7 @@ function MainNav() {
         <Divider />
       </List>
     </div>
-  );
+  )
   // TODO: Ниже нужен Toolbar?
   return (
     <AppBar position="static">
