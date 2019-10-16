@@ -1,7 +1,7 @@
 import React, {useState, Fragment} from 'react'
 import PropTypes from 'prop-types'
 import {makeStyles} from '@material-ui/core/styles'
-import {NavLink} from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import Container from '@material-ui/core/Container'
 import Grid from '@material-ui/core/Grid'
 import AppBar from '@material-ui/core/AppBar'
@@ -10,9 +10,9 @@ import Button from '@material-ui/core/Button'
 import Drawer from '@material-ui/core/Drawer'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
-import List from '@material-ui/core/List'
+import MenuList from '@material-ui/core/MenuList'
+import MenuItem from '@material-ui/core/MenuItem'
 import Divider from '@material-ui/core/Divider'
-import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 
@@ -35,6 +35,9 @@ const useStyles = makeStyles({
   },
   fullList: {
     width: 'auto',
+  },
+  grow: {
+    flexGrow: 1,
   },
 })
 
@@ -78,17 +81,20 @@ function MainNav() {
       to: URLS.PARTNERS,
       icon: <ListAltIcon />,
     },
+    {
+      text: getTitle(URLS.CART),
+      to: URLS.CART,
+      icon: <ShoppingCart />,
+    },
   ]
 
-  const renderNavLinks = navLinks =>
+  const renderLinks = navLinks =>
     navLinks.map(link => {
       return (
-        <NavLink key={link.to} to={link.to}>
-          <Button size="large">
-            {link.icon}
-            <span className="cropped">{link.text}</span>
-          </Button>
-        </NavLink>
+        <Button component={Link} key={link.to} to={link.to} size="large">
+          {link.icon}
+          <span className="cropped">{link.text}</span>
+        </Button>
       )
     })
 
@@ -99,30 +105,29 @@ function MainNav() {
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
-      <List component="nav">
+      <MenuList component="nav">
         {navLinks.map(link => {
           return (
-            <NavLink key={link.to} to={link.to}>
-              <ListItem button key={link.text}>
-                <ListItemIcon>{link.icon}</ListItemIcon>
-                <ListItemText primary={link.text} />
-              </ListItem>
-            </NavLink>
+            <MenuItem component={Link} key={link.to} to={link.to}>
+              <ListItemIcon>{link.icon}</ListItemIcon>
+              <ListItemText primary={link.text} />
+            </MenuItem>
           )
         })}
         <Divider />
-      </List>
+      </MenuList>
     </div>
   )
   // TODO: Ниже нужен Toolbar?
   return (
     <AppBar position="static">
       <Container>
-        <List component="nav">
-          <NavLink to={URLS.HOME}>
+        <Toolbar component="nav">
+          <Link to={URLS.HOME}>
             <img className="sidebar__logo" src={logImg} alt="Vaillant Group" width="50px" height="50px" />
-          </NavLink>
-          {renderNavLinks(navLinks)}
+          </Link>
+          {renderLinks(navLinks)}
+          <div className={classes.grow} />
           <IconButton aria-label="show 17 new notifications" color="inherit">
             <Badge badgeContent={17} color="secondary">
               <ShoppingCart />
@@ -131,7 +136,7 @@ function MainNav() {
           <IconButton onClick={toggleDrawer('left', true)}>
             <MenuIcon />
           </IconButton>
-        </List>
+        </Toolbar>
       </Container>
       <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
         {sideList('left', navLinks)}

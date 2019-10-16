@@ -6,4 +6,5 @@ export const getTitle = url => {
   if (url === URLS.BLOG) return 'Блог'
   if (url === URLS.CONTACTS) return 'Контакты'
   if (url === URLS.PARTNERS) return 'Партнеры'
+  if (url === URLS.CART) return 'Корзина'
 }

@@ -6,6 +6,7 @@ const URLS = {
   BLOG: '/blog',
   CONTACTS: '/contacts',
   PARTNERS: '/partners',
+  CART: '/cart',
 }
 
 export default URLS

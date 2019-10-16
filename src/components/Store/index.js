@@ -33,7 +33,7 @@ class Store extends Component {
 }
 
 const mapStateToProps = ({products}) => ({
-  products: products.products,
+  products: products.data,
   isProductsFetching: products.isProductsFetching,
   productsError: products.productsError,
 })

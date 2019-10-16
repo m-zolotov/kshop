@@ -12,8 +12,8 @@ class ProductsList extends PureComponent {
   renderProducts() {
     const {products} = this.props
     return products.map(product => (
-      <Grid item xs={4} key={product.id}>
-        <Product key={product.id} product={product} />
+      <Grid item xs={4} key={product.index}>
+        <Product key={product.index} product={product} />
       </Grid>
     ))
   }

@@ -4,7 +4,7 @@ import Container from '@material-ui/core/Container'
 
 import {getTitle} from '../../utils/helpres'
 
-class Home extends Component {
+class Cart extends Component {
   render() {
     const title = getTitle(window.location.pathname)
 
@@ -18,4 +18,4 @@ class Home extends Component {
   }
 }
 
-export default Home
+export default Cart
