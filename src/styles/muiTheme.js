@@ -1,7 +1,7 @@
 export const COLORS = {
   common: {
     black: '#000',
-    white: '#fff',
+    white: '#f8f3f0',
   },
   primary: {
     light: '#7986cb',
@@ -15,6 +15,12 @@ export const COLORS = {
   },
 }
 
+export const THEME = {
+  UNIT: 8,
+  EASE_IN_OUT: 'cubic-bezier(0.4, 0, 0.2, 1)',
+  SHORTER: 200,
+}
+
 export default {
   overrides: {
     MuiAppBar: {
@@ -23,6 +29,14 @@ export default {
         backgroundColor: COLORS.common.white,
       },
     },
+    MuiPaper: {
+      root: {
+        boxShadow: 'none',
+      },
+      elevation1: {
+        boxShadow: 'none',
+      },
+    }
   },
   props: {
     MuiButtonBase: {

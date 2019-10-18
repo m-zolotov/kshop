@@ -1,13 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Container from '@material-ui/core/Container'
-import Paper from '@material-ui/core/Paper'
 import Typography from '@material-ui/core/Typography'
 
 import './style.scss'
 
 function Header() {
-  // TODO: Использовать Paper?
 
   return (
     <Container>

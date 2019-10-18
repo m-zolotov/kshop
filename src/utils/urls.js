@@ -2,7 +2,7 @@ export const url = window.location.pathname
 
 const URLS = {
   HOME: '/',
-  STORE: '/store',
+  STORE: '/products',
   BLOG: '/blog',
   CONTACTS: '/contacts',
   PARTNERS: '/partners',

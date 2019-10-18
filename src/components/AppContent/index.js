@@ -4,7 +4,7 @@ import {Redirect, Switch, Route} from 'react-router-dom'
 
 import MainNav from '../MainNav'
 import Home from '../Home'
-import Store from '../Store'
+import Products from '../Products'
 import ProductPage from '../Products/ProductPage'
 import Blog from '../Blog'
 import Contacts from '../Contacts'
@@ -24,7 +24,7 @@ class AppContent extends Component {
       {
         path: URLS.STORE,
         exact: true,
-        component: Store,
+        component: Products,
       },
       {
         path: `${URLS.STORE}/:id`,

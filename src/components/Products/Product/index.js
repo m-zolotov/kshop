@@ -14,6 +14,9 @@ import Typography from '@material-ui/core/Typography'
 import URLS from '../../../utils/urls'
 
 const styles = {
+  Card: {
+    border: '1px solid #eee'
+  },
   cardMedia: {
     height: 200,
   },
@@ -27,7 +30,7 @@ class Product extends PureComponent {
   render() {
     const {classes, product} = this.props
     return (
-      <Card>
+      <Card square className={classes.Card}>
         <CardActionArea component={Link} to={`${URLS.STORE}/${product.index}`}>
           <CardMedia className={classes.cardMedia} image={product.imgThumb} title={product.title} />
           <CardContent>

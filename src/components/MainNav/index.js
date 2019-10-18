@@ -29,6 +29,7 @@ import {getTitle} from '../../utils/helpres'
 import URLS from '../../utils/urls'
 import './style.scss'
 
+//TODO: Переписать компонент на класс
 const useStyles = makeStyles({
   list: {
     width: 250,
@@ -118,7 +119,7 @@ function MainNav() {
       </MenuList>
     </div>
   )
-  // TODO: Ниже нужен Toolbar?
+
   return (
     <AppBar position="static">
       <Container>
