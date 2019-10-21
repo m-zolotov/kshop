@@ -1,6 +1,7 @@
 import React, {Component, Fragment} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
+import ArticlesList from '../Articles/ArticlesList'
 import Container from '@material-ui/core/Container'
 
 import {fetchPosts} from '../../redux/posts'
@@ -23,6 +24,7 @@ class Blog extends Component {
       <section>
         <Container>
           <h2>{title}</h2>
+          <ArticlesList />
         </Container>
       </section>
     )

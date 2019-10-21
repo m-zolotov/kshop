@@ -1,9 +1,8 @@
-import React, {useState, Fragment} from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {makeStyles} from '@material-ui/core/styles'
+import {withStyles} from '@material-ui/core/styles'
 import {Link} from 'react-router-dom'
 import Container from '@material-ui/core/Container'
-import Grid from '@material-ui/core/Grid'
 import AppBar from '@material-ui/core/AppBar'
 import Badge from '@material-ui/core/Badge'
 import Button from '@material-ui/core/Button'
@@ -29,8 +28,7 @@ import {getTitle} from '../../utils/helpres'
 import URLS from '../../utils/urls'
 import './style.scss'
 
-//TODO: Переписать компонент на класс
-const useStyles = makeStyles({
+const styles = {
   list: {
     width: 250,
   },
@@ -40,56 +38,57 @@ const useStyles = makeStyles({
   grow: {
     flexGrow: 1,
   },
-})
+}
 
-function MainNav() {
-  const classes = useStyles()
-  const [state, setState] = useState({
-    left: false,
-  })
+const navLinks = [
+  {
+    text: getTitle(URLS.HOME),
+    to: URLS.HOME,
+    icon: <PersonIcon />,
+  },
+  {
+    text: getTitle(URLS.STORE),
+    to: URLS.STORE,
+    icon: <Store />,
+  },
+  {
+    text: getTitle(URLS.BLOG),
+    to: URLS.BLOG,
+    icon: <CheckCircleIcon />,
+  },
+  {
+    text: getTitle(URLS.CONTACTS),
+    to: URLS.CONTACTS,
+    icon: <ArchiveIcon />,
+  },
+  {
+    text: getTitle(URLS.PARTNERS),
+    to: URLS.PARTNERS,
+    icon: <ListAltIcon />,
+  },
+  {
+    text: getTitle(URLS.CART),
+    to: URLS.CART,
+    icon: <ShoppingCart />,
+  },
+]
 
-  const toggleDrawer = (side, open) => event => {
+const initialState = {
+  open: false,
+}
+
+class MainNav extends Component {
+  state = initialState
+
+  toggleDrawer = () => event => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return
     }
 
-    setState({...state, [side]: open})
+    return this.setState(state => ({open: !state.open}))
   }
 
-  const navLinks = [
-    {
-      text: getTitle(URLS.HOME),
-      to: URLS.HOME,
-      icon: <PersonIcon />,
-    },
-    {
-      text: getTitle(URLS.STORE),
-      to: URLS.STORE,
-      icon: <Store />,
-    },
-    {
-      text: getTitle(URLS.BLOG),
-      to: URLS.BLOG,
-      icon: <CheckCircleIcon />,
-    },
-    {
-      text: getTitle(URLS.CONTACTS),
-      to: URLS.CONTACTS,
-      icon: <ArchiveIcon />,
-    },
-    {
-      text: getTitle(URLS.PARTNERS),
-      to: URLS.PARTNERS,
-      icon: <ListAltIcon />,
-    },
-    {
-      text: getTitle(URLS.CART),
-      to: URLS.CART,
-      icon: <ShoppingCart />,
-    },
-  ]
-
-  const renderLinks = navLinks =>
+  renderLinks = navLinks =>
     navLinks.map(link => {
       return (
         <Button component={Link} key={link.to} to={link.to} size="large">
@@ -99,51 +98,59 @@ function MainNav() {
       )
     })
 
-  const sideList = (side, navLinks) => (
-    <div
-      className={classes.list}
-      role="presentation"
-      onClick={toggleDrawer(side, false)}
-      onKeyDown={toggleDrawer(side, false)}
-    >
-      <MenuList component="nav">
-        {navLinks.map(link => {
-          return (
-            <MenuItem component={Link} key={link.to} to={link.to}>
-              <ListItemIcon>{link.icon}</ListItemIcon>
-              <ListItemText primary={link.text} />
-            </MenuItem>
-          )
-        })}
-        <Divider />
-      </MenuList>
-    </div>
-  )
+  sideList = (navLinks) => {
+    const {classes} = this.props
 
-  return (
-    <AppBar position="static">
-      <Container>
-        <Toolbar component="nav">
-          <Link to={URLS.HOME}>
-            <img className="sidebar__logo" src={logImg} alt="Vaillant Group" width="50px" height="50px" />
-          </Link>
-          {renderLinks(navLinks)}
-          <div className={classes.grow} />
-          <IconButton aria-label="show 17 new notifications" color="inherit">
-            <Badge badgeContent={17} color="secondary">
-              <ShoppingCart />
-            </Badge>
-          </IconButton>
-          <IconButton onClick={toggleDrawer('left', true)}>
-            <MenuIcon />
-          </IconButton>
-        </Toolbar>
-      </Container>
-      <Drawer open={state.left} onClose={toggleDrawer('left', false)}>
-        {sideList('left', navLinks)}
-      </Drawer>
-    </AppBar>
-  )
+    return (
+      <div
+        className={classes.list}
+        onClick={this.toggleDrawer()}
+        onKeyDown={this.toggleDrawer()}
+      >
+        <MenuList component="nav">
+          {navLinks.map(link => {
+            return (
+              <MenuItem component={Link} key={link.to} to={link.to} selected={window.location.pathname === link.to}>
+                <ListItemIcon>{link.icon}</ListItemIcon>
+                <ListItemText primary={link.text} />
+              </MenuItem>
+            )
+          })}
+          <Divider />
+        </MenuList>
+      </div>
+    )
+  }
+
+  render() {
+    const {open} = this.state
+    const {classes} = this.props
+
+    return (
+      <AppBar position="static">
+        <Container>
+          <Toolbar component="nav">
+            <Link to={URLS.HOME}>
+              <img className="sidebar__logo" src={logImg} alt="Vaillant Group" width="50px" height="50px" />
+            </Link>
+            {this.renderLinks(navLinks)}
+            <div className={classes.grow} />
+            <IconButton aria-label="show 17 new notifications" color="inherit">
+              <Badge badgeContent={17} color="secondary">
+                <ShoppingCart />
+              </Badge>
+            </IconButton>
+            <IconButton onClick={this.toggleDrawer()}>
+              <MenuIcon />
+            </IconButton>
+          </Toolbar>
+        </Container>
+        <Drawer open={open} onClose={this.toggleDrawer()}>
+          {this.sideList(navLinks)}
+        </Drawer>
+      </AppBar>
+    )
+  }
 }
 
-export default MainNav
+export default withStyles(styles)(MainNav)
