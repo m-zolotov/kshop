@@ -91,7 +91,12 @@ class MainNav extends Component {
   renderLinks = navLinks =>
     navLinks.map(link => {
       return (
-        <Button component={Link} key={link.to} to={link.to} size="large">
+        <Button component={Link}
+                key={link.to}
+                to={link.to}
+                size="large"
+                //variant={link.to === window.location.pathname ? "outlined" : "text"}
+        >
           {link.icon}
           <span className="cropped">{link.text}</span>
         </Button>
