@@ -6,7 +6,6 @@ import Typography from '@material-ui/core/Typography'
 import './style.scss'
 
 function Header() {
-
   return (
     <Container>
       <Typography variant="h5" component="h3">

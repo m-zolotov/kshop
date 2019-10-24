@@ -7,11 +7,7 @@ class Article extends PureComponent {
   }
 
   render() {
-    return (
-      <div>
-
-      </div>
-    )
+    return <div></div>
   }
 }
 

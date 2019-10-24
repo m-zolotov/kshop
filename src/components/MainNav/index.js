@@ -5,15 +5,8 @@ import {Link} from 'react-router-dom'
 import Container from '@material-ui/core/Container'
 import AppBar from '@material-ui/core/AppBar'
 import Badge from '@material-ui/core/Badge'
-import Button from '@material-ui/core/Button'
 import Drawer from '@material-ui/core/Drawer'
-import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
-import MenuList from '@material-ui/core/MenuList'
-import MenuItem from '@material-ui/core/MenuItem'
-import Divider from '@material-ui/core/Divider'
-import ListItemIcon from '@material-ui/core/ListItemIcon'
-import ListItemText from '@material-ui/core/ListItemText'
 
 import MenuIcon from '@material-ui/icons/Menu'
 import Store from '@material-ui/icons/Store'
@@ -22,8 +15,9 @@ import CheckCircleIcon from '@material-ui/icons/CheckCircleTwoTone'
 import ArchiveIcon from '@material-ui/icons/ArchiveTwoTone'
 import ListAltIcon from '@material-ui/icons/ListAltTwoTone'
 import ShoppingCart from '@material-ui/icons/ShoppingCart'
+import Tabs from '@material-ui/core/Tabs'
+import Tab from '@material-ui/core/Tab'
 
-import logImg from '../../assets/img/logo.svg'
 import {getTitle} from '../../utils/helpres'
 import URLS from '../../utils/urls'
 import './style.scss'
@@ -75,6 +69,7 @@ const navLinks = [
 
 const initialState = {
   open: false,
+  value: null,
 }
 
 class MainNav extends Component {
@@ -90,56 +85,28 @@ class MainNav extends Component {
 
   renderLinks = navLinks =>
     navLinks.map(link => {
-      return (
-        <Button component={Link}
-                key={link.to}
-                to={link.to}
-                size="large"
-                //variant={link.to === window.location.pathname ? "outlined" : "text"}
-        >
-          {link.icon}
-          <span className="cropped">{link.text}</span>
-        </Button>
-      )
+      return <Tab component={Link} key={link.to} to={link.to} label={link.text} icon={link.icon} />
     })
 
-  sideList = (navLinks) => {
-    const {classes} = this.props
-
-    return (
-      <div
-        className={classes.list}
-        onClick={this.toggleDrawer()}
-        onKeyDown={this.toggleDrawer()}
-      >
-        <MenuList component="nav">
-          {navLinks.map(link => {
-            return (
-              <MenuItem component={Link} key={link.to} to={link.to} selected={window.location.pathname === link.to}>
-                <ListItemIcon>{link.icon}</ListItemIcon>
-                <ListItemText primary={link.text} />
-              </MenuItem>
-            )
-          })}
-          <Divider />
-        </MenuList>
-      </div>
-    )
+  handleChange = (event, value) => {
+    this.setState({value})
   }
 
   render() {
-    const {open} = this.state
+    const {open, value} = this.state
     const {classes} = this.props
 
     return (
       <AppBar position="static">
         <Container>
-          <Toolbar component="nav">
-            <Link to={URLS.HOME}>
-              <img className="sidebar__logo" src={logImg} alt="Vaillant Group" width="50px" height="50px" />
-            </Link>
+          <Tabs
+            component="nav"
+            value={value}
+            onChange={this.handleChange}
+            indicatorColor="secondary"
+            textColor="secondary"
+          >
             {this.renderLinks(navLinks)}
-            <div className={classes.grow} />
             <IconButton aria-label="show 17 new notifications" color="inherit">
               <Badge badgeContent={17} color="secondary">
                 <ShoppingCart />
@@ -148,10 +115,20 @@ class MainNav extends Component {
             <IconButton onClick={this.toggleDrawer()}>
               <MenuIcon />
             </IconButton>
-          </Toolbar>
+          </Tabs>
         </Container>
         <Drawer open={open} onClose={this.toggleDrawer()}>
-          {this.sideList(navLinks)}
+          <Tabs
+            component="nav"
+            orientation="vertical"
+            value={value}
+            onChange={this.handleChange}
+            indicatorColor="secondary"
+            textColor="secondary"
+            className={classes.list}
+          >
+            {this.renderLinks(navLinks)}
+          </Tabs>
         </Drawer>
       </AppBar>
     )

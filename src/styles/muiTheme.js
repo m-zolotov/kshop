@@ -36,7 +36,7 @@ export default {
       elevation1: {
         boxShadow: 'none',
       },
-    }
+    },
   },
   props: {
     MuiButtonBase: {

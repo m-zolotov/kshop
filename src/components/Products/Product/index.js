@@ -15,7 +15,7 @@ import URLS from '../../../utils/urls'
 
 const styles = {
   Card: {
-    border: '1px solid #eee'
+    border: '1px solid #eee',
   },
   cardMedia: {
     height: 200,
