@@ -17,8 +17,9 @@ import ListAltIcon from '@material-ui/icons/ListAltTwoTone'
 import ShoppingCart from '@material-ui/icons/ShoppingCart'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
+import Toolbar from '@material-ui/core/Toolbar'
 
-import {getTitle} from '../../utils/helpres'
+import {getTitle, getIdOpenPage} from '../../utils/helpres'
 import URLS from '../../utils/urls'
 import './style.scss'
 
@@ -69,7 +70,7 @@ const navLinks = [
 
 const initialState = {
   open: false,
-  value: null,
+  value: getIdOpenPage(),
 }
 
 class MainNav extends Component {
@@ -85,7 +86,7 @@ class MainNav extends Component {
 
   renderLinks = navLinks =>
     navLinks.map(link => {
-      return <Tab component={Link} key={link.to} to={link.to} label={link.text} icon={link.icon} />
+      return <Tab component={Link} key={link.to} to={link.to} label={link.text} />
     })
 
   handleChange = (event, value) => {
@@ -99,23 +100,25 @@ class MainNav extends Component {
     return (
       <AppBar position="static">
         <Container>
-          <Tabs
-            component="nav"
-            value={value}
-            onChange={this.handleChange}
-            indicatorColor="secondary"
-            textColor="secondary"
-          >
-            {this.renderLinks(navLinks)}
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <ShoppingCart />
-              </Badge>
-            </IconButton>
-            <IconButton onClick={this.toggleDrawer()}>
-              <MenuIcon />
-            </IconButton>
-          </Tabs>
+          <Toolbar>
+            <Tabs
+              component="nav"
+              value={value}
+              onChange={this.handleChange}
+              indicatorColor="secondary"
+              textColor="secondary"
+            >
+              {this.renderLinks(navLinks)}
+              <IconButton aria-label="show 17 new notifications" color="inherit">
+                <Badge badgeContent={17} color="secondary">
+                  <ShoppingCart />
+                </Badge>
+              </IconButton>
+              <IconButton onClick={this.toggleDrawer()}>
+                <MenuIcon />
+              </IconButton>
+            </Tabs>
+          </Toolbar>
         </Container>
         <Drawer open={open} onClose={this.toggleDrawer()}>
           <Tabs
