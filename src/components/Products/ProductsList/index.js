@@ -11,7 +11,7 @@ class ProductsList extends PureComponent {
 
   get body() {
     return this.props.products.map(product => (
-      <Grid key={product.index} item xs={4}>
+      <Grid key={product.index} item xs={12} sm={6} md={4}>
         <Product product={product} />
       </Grid>
     ))

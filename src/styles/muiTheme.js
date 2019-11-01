@@ -1,7 +1,20 @@
 export const COLORS = {
   common: {
-    black: '#000',
     white: '#f8f3f0',
+    black: '#000',
+  },
+  gray: {
+    gray1: '#e9e9e9',
+    gray2: '#d3d3d3',
+    gray3: '#bdbebd',
+    gray4: '#a9a9a9',
+    gray5: '#949494',
+    gray6: '#808080',
+    gray7: '#6a6a6a',
+    gray8: '#545454',
+    gray9: '#3f3f3f',
+    gray10: '#2c2c2c',
+    gray11: '#191919',
   },
   primary: {
     light: '#7986cb',
@@ -13,6 +26,20 @@ export const COLORS = {
     main: '#f50057',
     dark: '#c51162',
   },
+  success: {
+    main: '#28a745'
+  },
+  danger: {
+    main: '#dc3545'
+  },
+  warning: {
+    main: '#ffc107'
+  },
+  info: {
+    main: '#17a2b8',
+  },
+  bgLight: '#f8f9fa',
+  bgDark: '#343a40'
 }
 
 export const THEME = {
