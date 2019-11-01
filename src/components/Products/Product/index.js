@@ -34,7 +34,7 @@ class Product extends PureComponent {
         <CardActionArea component={Link} to={`${URLS.STORE}/${product.index}`}>
           <CardMedia className={classes.cardMedia} image={product.imgThumb} title={product.title} />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="h3">
+            <Typography gutterBottom variant="h6" component="h3">
               {product.title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">

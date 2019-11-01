@@ -5,8 +5,8 @@ import Container from '@material-ui/core/Container'
 
 import ProductsList from './ProductsList'
 import {fetchProducts} from '../../redux/products'
-import {getTitle} from '../../utils/helpres'
 import Loader from '../_common/Loader'
+import Header from '../_common/Header'
 
 class Products extends Component {
   static propTypes = {
@@ -19,14 +19,13 @@ class Products extends Component {
   }
 
   render() {
-    const title = getTitle(window.location.pathname)
     const {products, isProductsFetching} = this.props
 
     return (
       <section>
         <Container>
           <Loader isFetch={isProductsFetching} />
-          <h2>{title}</h2>
+          <Header />
           {products && <ProductsList products={products} />}
         </Container>
       </section>

@@ -18,6 +18,7 @@ import ShoppingCart from '@material-ui/icons/ShoppingCart'
 import Tabs from '@material-ui/core/Tabs'
 import Tab from '@material-ui/core/Tab'
 import Toolbar from '@material-ui/core/Toolbar'
+import Hidden from '@material-ui/core/Hidden'
 
 import {getTitle, getIdOpenPage} from '../../utils/helpres'
 import URLS from '../../utils/urls'
@@ -27,11 +28,12 @@ const styles = {
   list: {
     width: 250,
   },
-  fullList: {
-    width: 'auto',
-  },
   grow: {
     flexGrow: 1,
+  },
+  toolbar: {
+    paddingLeft: "0",
+    paddingRight: "0",
   },
 }
 
@@ -100,39 +102,41 @@ class MainNav extends Component {
     return (
       <AppBar position="static">
         <Container>
-          <Toolbar>
-            <Tabs
-              component="nav"
-              value={value}
-              onChange={this.handleChange}
-              indicatorColor="secondary"
-              textColor="secondary"
-            >
-              {this.renderLinks(navLinks)}
+          <Toolbar className={classes.toolbar}>
+            <Hidden smDown>
+              <Tabs component="nav" value={value} onChange={this.handleChange} className={classes.grow}>
+                {this.renderLinks(navLinks)}
+              </Tabs>
+            </Hidden>
+            <Hidden mdUp>
+              <div className={classes.grow}>
+                <IconButton onClick={this.toggleDrawer()}>
+                  <MenuIcon />
+                </IconButton>
+              </div>
               <IconButton aria-label="show 17 new notifications" color="inherit">
                 <Badge badgeContent={17} color="secondary">
                   <ShoppingCart />
                 </Badge>
               </IconButton>
-              <IconButton onClick={this.toggleDrawer()}>
-                <MenuIcon />
-              </IconButton>
-            </Tabs>
+            </Hidden>
           </Toolbar>
         </Container>
-        <Drawer open={open} onClose={this.toggleDrawer()}>
-          <Tabs
-            component="nav"
-            orientation="vertical"
-            value={value}
-            onChange={this.handleChange}
-            indicatorColor="secondary"
-            textColor="secondary"
-            className={classes.list}
-          >
-            {this.renderLinks(navLinks)}
-          </Tabs>
-        </Drawer>
+        <Hidden mdUp>
+          <Drawer open={open} onClose={this.toggleDrawer()}>
+            <Tabs
+              component="nav"
+              orientation="vertical"
+              value={value}
+              onChange={this.handleChange}
+              indicatorColor="secondary"
+              textColor="secondary"
+              className={classes.list}
+            >
+              {this.renderLinks(navLinks)}
+            </Tabs>
+          </Drawer>
+        </Hidden>
       </AppBar>
     )
   }

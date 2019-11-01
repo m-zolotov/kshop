@@ -2,18 +2,18 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import Container from '@material-ui/core/Container'
 
-import {getTitle} from '../../utils/helpres'
-import Header from '../Header'
+import Header from '../_common/Header'
+import ContactsList from './ContactsList'
 
 class Contacts extends Component {
-  render() {
-    const title = getTitle(window.location.pathname)
+  static propTypes = {}
 
+  render() {
     return (
       <section>
         <Container>
-          <h2>{title}</h2>
           <Header />
+          <ContactsList />
         </Container>
       </section>
     )

@@ -5,7 +5,6 @@ import PropTypes from 'prop-types'
 import {CSSTransition} from 'react-transition-group'
 import CircularProgress from '@material-ui/core/CircularProgress'
 
-//import './style.scss'
 import {COLORS, THEME} from '../../../styles/muiTheme'
 
 const styles = {

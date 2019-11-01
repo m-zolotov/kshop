@@ -1,11 +1,11 @@
-import React, {Component, Fragment} from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import ArticlesList from '../Articles/ArticlesList'
 import Container from '@material-ui/core/Container'
 
+import Header from '../_common/Header'
 import {fetchPosts} from '../../redux/posts'
-import {getTitle} from '../../utils/helpres'
 
 class Blog extends Component {
   static propTypes = {
@@ -18,12 +18,10 @@ class Blog extends Component {
   }
 
   render() {
-    const title = getTitle(window.location.pathname)
-
     return (
       <section>
         <Container>
-          <h2>{title}</h2>
+          <Header />
           <ArticlesList />
         </Container>
       </section>
