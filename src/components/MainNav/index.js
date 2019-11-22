@@ -32,9 +32,12 @@ const styles = {
     flexGrow: 1,
   },
   toolbar: {
-    paddingLeft: "0",
-    paddingRight: "0",
+    paddingLeft: '0',
+    paddingRight: '0',
   },
+  badge: {
+    padding: '0 16px',
+  }
 }
 
 const navLinks = [
@@ -67,11 +70,15 @@ const navLinks = [
     text: getTitle(URLS.CART),
     to: URLS.CART,
     icon: <ShoppingCart />,
+    badge: true,
   },
 ]
 
+//TODO: Посмотреть в истории коммитов и вернуть иконку карзины заместо таба. Проверить как будет смотрется бейдж на иконке
+
 const initialState = {
   open: false,
+  invisible: false,
   value: getIdOpenPage(),
 }
 
@@ -86,10 +93,15 @@ class MainNav extends Component {
     return this.setState(state => ({open: !state.open}))
   }
 
-  renderLinks = navLinks =>
-    navLinks.map(link => {
-      return <Tab component={Link} key={link.to} to={link.to} label={link.text} />
+  renderLinks = navLinks => {
+    const {classes} = this.props
+    const {invisible} = this.state
+
+    return navLinks.map(link => {
+      return <Tab component={Link} key={link.to} to={link.to} label={link.badge ?
+        <Badge className={classes.badge} color="secondary" badgeContent={4} invisible={invisible}>{link.text}</Badge> : link.text} />
     })
+  }
 
   handleChange = (event, value) => {
     this.setState({value})

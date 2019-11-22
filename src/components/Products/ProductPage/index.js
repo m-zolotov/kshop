@@ -1,19 +1,16 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import {withStyles} from '@material-ui/core/styles'
 import {connect} from 'react-redux'
 import Container from '@material-ui/core/Container'
-import Button from '@material-ui/core/Button'
-import Typography from '@material-ui/core/Typography'
+import Card from '@material-ui/core/Card'
 import {fetchProducts} from '../../../redux/products'
+import Grid from '@material-ui/core/Grid'
 import Header from '../../_common/Header'
 
-const styles = {
-  heading: {
-    marginTop: 15,
-    marginBottom: 15,
-  }
-}
+import ProductCardMedia from '../ProductCardMedia'
+import ProductCardContent from '../ProductCardContent'
+
+//Todo: Перенести Grid item в отдельные файлы и вызывать сдесь с withStyles
 
 class ProductPage extends Component {
   render() {
@@ -21,6 +18,16 @@ class ProductPage extends Component {
       <section>
         <Container>
           <Header title='Hello!' />
+          <Card>
+            <Grid container spacing={2}>
+              <Grid item xs={12} sm={8}>
+                <ProductCardContent />
+              </Grid>
+              <Grid item xs={12} sm={4}>
+                <ProductCardMedia />
+              </Grid>
+            </Grid>
+          </Card>
         </Container>
       </section>
     )

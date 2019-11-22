@@ -46,6 +46,9 @@ class Product extends PureComponent {
           <Button size="small" color="primary">
             Добавить в корзину
           </Button>
+          <Button size="small" color="primary">
+            Купить
+          </Button>
         </CardActions>
       </Card>
     )
